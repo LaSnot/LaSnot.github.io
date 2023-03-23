@@ -19,12 +19,13 @@ $(document).ready(() => {
     {
       name: 'corrupt.bio',
       link: 'corrupt.bio/t',
-    },
+    }, 
     {
       name: 'roblox',
-      link: 'https://www.roblox.com/users/2009811896/profile'
-   } 
- ];
+      link: 'https://www.roblox.com/users/2009811896/profile', 
+      
+    }
+  ];
 
   for (let i in links) {
     let link = links[i];
