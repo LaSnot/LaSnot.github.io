@@ -14,7 +14,7 @@ $(document).ready(() => {
     },
     {
       name: 'spotify',
-      link: 'open.spotify.com/artist/30WXKK97sXeerbkhM4mtRe',
+      link: 'https://open.spotify.com/artist/30WXKK97sXeerbkhM4mtRe?si=EOUg7-2_QNKnzvJnLBOtsw',
     },
     {
       name: 'corrupt.bio',
