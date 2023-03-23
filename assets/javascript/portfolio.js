@@ -9,16 +9,16 @@ const mobileAndTabletCheck = () => /Android|webOS|iPhone|iPad|iPod|BlackBerry|IE
 $(document).ready(() => {
   const links = [
     {
-      name: 'my discord',
-      link: 'discord.com/users/745631824163766412',
+      name: 'tiktok',
+      link: 'www.tiktok.com/@turtize',
     },
     {
       name: 'spotify',
-      link: 'open.spotify.com/playlist/0Ts0XM8uMEpuhVwooDDaUj?si=99e33f2e0edb4a2c',
+      link: 'https://open.spotify.com/artist/30WXKK97sXeerbkhM4mtRe',
     },
     {
-      name: 'feds.lol',
-      link: 'feds.lol/ceo',
+      name: 'corrupt.bio',
+      link: 'corrupt.bio/t',
     }
   ];
 
