@@ -8,7 +8,7 @@ class _app {
     backgroundToggler = false;
     shouldIgnoreVideo = false;
     effects = ['bounce', 'flash', 'pulse', 'rubberBand', 'shake', 'swing', 'tada', 'wobble', 'jello'];
-    brandDescription = ['Colombian Snorter', 'Latino', 'Yet#0001', 'curly head', '#1 skid', 'cool guy', 'pc nerd', '.gg/mp4'];
+    brandDescription = ['Colombian Snorter', 'Latino', 'Yet#0001'];
   
     titleChanger = (text, delay) => {
       if (!text) return;
