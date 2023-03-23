@@ -22,7 +22,7 @@ $(document).ready(() => {
     }, 
     {
       name: 'roblox',
-      link: 'www.roblox.com/users/2009811896/profile', 
+      link: 'https://www.roblox.com/users/2009811896/profile', 
       
     }
   ];
