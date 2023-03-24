@@ -27,7 +27,10 @@ $(document).ready(() => {
     {
       name: 'instagram',
       link: 'www.instagram.com/ashedc1g/',
-    }
+    },
+    {
+     name: 'snapchat',
+     link: 'https://www.snapchat.com/add/turtize?share_id=JqQCdvCrQ0GDOB7wlF+R8w&locale=sv_SE',
   ];
 
   for (let i in links) {
