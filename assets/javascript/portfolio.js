@@ -27,10 +27,6 @@ $(document).ready(() => {
     {
       name: 'instagram',
       link: 'www.instagram.com/ashedc1g/',
-    }, 
-    {
-      Name: 'snapchat',
-      Link: 'https://www.snapchat.com/add/turtize?share_id=HGDH1TyoTA+9xL43A3767g&locale=sv_SE'https://www.snapchat.com/add/turtize?share_id=HGDH1TyoTA+9xL43A3767g&locale=sv_SE'https://www.snapchat.com/add/turtize?share_id=HGDH1TyoTA+9xL43A3767g&locale=sv_SE',
     }
   ];
 
