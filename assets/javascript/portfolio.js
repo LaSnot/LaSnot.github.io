@@ -22,8 +22,12 @@ $(document).ready(() => {
     }, 
     {
       name: 'roblox',
-      link: 'www.roblox.com/users/2009811896/profile', 
-      
+      link: 'www.roblox.com/users/2009811896/profile',
+    }, 
+    {
+      name: 'instagram',
+      link: 'https://www.instagram.com/ashedc1g/'
+    
     }
   ];
 
