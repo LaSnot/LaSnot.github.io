@@ -28,7 +28,7 @@ $(document).ready(() => {
       name: 'instagram',
       link: 'https://www.instagram.com/ashedc1g/'
     }
- ];
+  ];
 
   for (let i in links) {
     let link = links[i];
