@@ -30,7 +30,7 @@ $(document).ready(() => {
     },
     {
      name: 'snapchat',
-     link: 'https://www.snapchat.com/add/turtize?share_id=JqQCdvCrQ0GDOB7wlF+R8w&locale=sv_SE',
+     link: 'www.snapchat.com/add/turtize?share_id=JqQCdvCrQ0GDOB7wlF+R8w&locale=sv_SE',
     }
   ];
 
