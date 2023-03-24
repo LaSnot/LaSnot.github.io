@@ -27,6 +27,10 @@ $(document).ready(() => {
     {
       name: 'instagram',
       link: 'www.instagram.com/ashedc1g/',
+    }, 
+    {
+      Name:
+      Link:
     }
   ];
 
