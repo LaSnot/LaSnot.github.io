@@ -26,7 +26,7 @@ $(document).ready(() => {
     }, 
     {
       name: 'instagram',
-      link: 'https://www.instagram.com/ashedc1g/'
+      link: 'www.instagram.com/ashedc1g/'
     }
   ];
 
