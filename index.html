@@ -1,66 +1,280 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Mini Game</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-        }
+  <title>turtize.lol</title>
+  <link rel='icon' href='https://media.discordapp.net/attachments/1088248913980571769/1088997198710177803/th-_21_.png'
+  <meta charset="UTF-8" />
+  <meta name="description" content="Yet#0001 BioLink. Following Will Help💵💲" />
+  <meta name="keywords" content="turtize" />
+  <meta name="author" content="" />
+  <meta property="og:type" content="site" />
+  <meta property="og:title" content="Yet#0001 BioLink. Following Will Help💵💲" />
+  <meta property="og:description" content="" />
+  <meta property="og:url" content="index.html" />
+  <meta property="og:image" content="" />
+  <meta itemprop="name" content="Yet#0001 BioLink. Following Will Help💵💲" />
+  <meta itemprop="description" content="Yet#0001 BioLink. Following Will Help💵💲" />
+  <meta itemprop="image" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-        .container {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .game-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 500px;
-        }
-
-        .game {
-            display: flex;
-            flex-wrap: wrap;
-            width: 300px;
-            height: 300px;
-            border: 2px solid #333;
-            border-radius: 5px;
-            padding: 10px;
-            background-color: #fff;
-            box-shadow: 0 0 10px #666;
-        }
-
-        .square {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 90px;
-            height: 90px;
-            border: 2px solid #333;
-            border-radius: 5px;
-            margin: 5px;
-            cursor: pointer;
-        }
-
-        .square:hover {
-            background-color: #eee;
-        }
-
-        .active {
-            background-color: #333;
-            color: #fff;
-        }
-    </style>
+  <link rel="shortcut icon" href="#" type="image/x-icon" />
+  <link rel="stylesheet" type="text/css" href="assets/stylesheets/stylesheet.css" />
+  <link rel="stylesheet" type="text/css"
+    href="../cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
 </head>
+  <script type="text/javascript">
+// <![CDATA[
+var colour="#FFFFFF";
+var sparkles=120;
+
+
+var x=ox=400;
+var y=oy=300;
+var swide=800;
+var shigh=600;
+var sleft=sdown=0;
+var tiny=new Array();
+var star=new Array();
+var starv=new Array();
+var starx=new Array();
+var stary=new Array();
+var tinyx=new Array();
+var tinyy=new Array();
+var tinyv=new Array();
+
+window.onload=function() { if (document.getElementById) {
+  var i, rats, rlef, rdow;
+  for (var i=0; i<sparkles; i++) {
+    var rats=createDiv(3, 3);
+    rats.style.visibility="hidden";
+    document.body.appendChild(tiny[i]=rats);
+    starv[i]=0;
+    tinyv[i]=0;
+    var rats=createDiv(5, 5);
+    rats.style.backgroundColor="transparent";
+    rats.style.visibility="hidden";
+    var rlef=createDiv(1, 5);
+    var rdow=createDiv(5, 1);
+    rats.appendChild(rlef);
+    rats.appendChild(rdow);
+    rlef.style.top="2px";
+    rlef.style.left="0px";
+    rdow.style.top="0px";
+    rdow.style.left="2px";
+    document.body.appendChild(star[i]=rats);
+  }
+  set_width();
+  sparkle();
+}}
+
+function sparkle() {
+  var c;
+  if (x!=ox || y!=oy) {
+    ox=x;
+    oy=y;
+    for (c=0; c<sparkles; c++) if (!starv[c]) {
+      star[c].style.left=(starx[c]=x)+"px";
+      star[c].style.top=(stary[c]=y)+"px";
+      star[c].style.clip="rect(0px, 5px, 5px, 0px)";
+      star[c].style.visibility="visible";
+      starv[c]=50;
+      break;
+    }
+  }
+  for (c=0; c<sparkles; c++) {
+    if (starv[c]) update_star(c);
+    if (tinyv[c]) update_tiny(c);
+  }
+  setTimeout("sparkle()", 40);
+}
+
+function update_star(i) {
+  if (--starv[i]==25) star[i].style.clip="rect(1px, 4px, 4px, 1px)";
+  if (starv[i]) {
+    stary[i]+=1+Math.random()*3;
+    if (stary[i]<shigh+sdown) {
+      star[i].style.top=stary[i]+"px";
+      starx[i]+=(i%5-2)/5;
+      star[i].style.left=starx[i]+"px";
+    }
+    else {
+      star[i].style.visibility="hidden";
+      starv[i]=0;
+      return;
+    }
+  }
+  else {
+    tinyv[i]=50;
+    tiny[i].style.top=(tinyy[i]=stary[i])+"px";
+    tiny[i].style.left=(tinyx[i]=starx[i])+"px";
+    tiny[i].style.width="2px";
+    tiny[i].style.height="2px";
+    star[i].style.visibility="hidden";
+    tiny[i].style.visibility="visible"
+  }
+}
+
+function update_tiny(i) {
+  if (--tinyv[i]==25) {
+    tiny[i].style.width="1px";
+    tiny[i].style.height="1px";
+  }
+  if (tinyv[i]) {
+    tinyy[i]+=1+Math.random()*3;
+    if (tinyy[i]<shigh+sdown) {
+      tiny[i].style.top=tinyy[i]+"px";
+      tinyx[i]+=(i%5-2)/5;
+      tiny[i].style.left=tinyx[i]+"px";
+    }
+    else {
+      tiny[i].style.visibility="hidden";
+      tinyv[i]=0;
+      return;
+    }
+  }
+  else tiny[i].style.visibility="hidden";
+}
+
+document.onmousemove=mouse;
+function mouse(e) {
+  set_scroll();
+  y=(e)?e.pageY:event.y+sdown;
+  x=(e)?e.pageX:event.x+sleft;
+}
+
+function set_scroll() {
+  if (typeof(self.pageYOffset)=="number") {
+    sdown=self.pageYOffset;
+    sleft=self.pageXOffset;
+  }
+  else if (document.body.scrollTop || document.body.scrollLeft) {
+    sdown=document.body.scrollTop;
+    sleft=document.body.scrollLeft;
+  }
+  else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
+    sleft=document.documentElement.scrollLeft;
+	sdown=document.documentElement.scrollTop;
+  }
+  else {
+    sdown=0;
+    sleft=0;
+  }
+}
+
+window.onresize=set_width;
+function set_width() {
+  if (typeof(self.innerWidth)=="number") {
+    swide=self.innerWidth;
+    shigh=self.innerHeight;
+  }
+  else if (document.documentElement && document.documentElement.clientWidth) {
+    swide=document.documentElement.clientWidth;
+    shigh=document.documentElement.clientHeight;
+  }
+  else if (document.body.clientWidth) {
+    swide=document.body.clientWidth;
+    shigh=document.body.clientHeight;
+  }
+}
+
+function createDiv(height, width) {
+  var div=document.createElement("div");
+  div.style.position="absolute";
+  div.style.height=height+"px";
+  div.style.width=width+"px";
+  div.style.overflow="hidden";
+  div.style.backgroundColor=colour;
+  return (div);
+}
+// ]]>
+</script>
+
+
 <body>
-    <div class="container">
-        <h1>Mini Game</h1>
-        <div class="game-container">
-            <div class="game" id="game">
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div
+  <script type="text/javascript" src="assets/javascript/app.js"></script>
+
+  <div id="main">
+    <table class="box">
+      <tbody>
+        <tr>
+          <td><span id="line1" style="white-space: pre;"></span></td>
+        </tr>
+        <tr>
+          <td><span id="line2" style="white-space: pre;"></span></td>
+        </tr>
+        <tr>
+          <td><span id="line3 space" style="white-space: pre;"></span></td>
+        </tr>
+        <tr>
+          <td><span id="line4" style="white-space: pre;"></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="container" style="display: none;">
+    <h1 class="brand-header">
+      <a href="https://corrupt.bio/t" target="BLANK">🦇Turtize.lol</a>
+    </h1>
+
+    <p><span id="brand"></span></p>
+  </div>
+
+  <div class="marquee-container" style="visibility: hidden;">
+    <pre>|<div id="marquee"></div>|</pre>
+  </div>
+
+  <div class="background" style="display: none;">
+    <div id="pattern"></div>
+
+    <audio id="audio" loop="">
+      <source src="https://cdn.discordapp.com/attachments/1088507258259918981/1088841764464504852/ZillaKami_-_BLEACH_ft._Denzel_Curry_Official_Music_Video.mp4" type="audio/mp4" />
+      <script>
+        const audio = document.getElementById('audio');
+
+        app.audioElement = audio;
+        app.audioElement.volume = 50;
+      </script>
+    </audio>
+
+    <video id="background" loop="">
+      <source src="https://cdn.discordapp.com/attachments/1088507258259918981/1088841764464504852/ZillaKami_-_BLEACH_ft._Denzel_Curry_Official_Music_Video.mp4" type="video/mp4" />
+      <script>
+        const video = document.getElementById('background');
+
+        app.videoElement = video;
+        app.videoElement.volume = 0;
+      </script>
+    </video>
+  </div>
+
+  <div class="top-right">
+    <i><a class="skip">skip intro</a></i>
+  </div>
+
+  <div class="footer">
+    <i><a href="https://discord.gg/swedish" target="_BLANK">Press To Join Swedish Server</a></i>
+  </div>
+
+  <script type="text/javascript" src="assets/javascript/lib/jquery-3.1.1.min.js"></script>
+  <script type="text/javascript" src="assets/javascript/lib/jquery.marquee.min.js"></script>
+  <script type="text/javascript" src="assets/javascript/lib/jquery.cookie.min.js"></script>
+  <script type="text/javascript" src="assets/javascript/lib/typed.min.js"></script>
+  <script type="text/javascript" src="assets/javascript/portfolio.js"></script>
+            
+<div id="center;">
+                <div style="text-align: center;"
+            <a href="https://discord.com/users/914057778325254144" target="_blank">
+                <img src="https://discord.c99.nl/widget/theme-4/914057778325254144.png" style="width: 300px;">
+            </a>
+        </div>
+    </div> 
+</body>
+
+<style>
+<h2 class="text-[20px] text-white font-semibold" style="color: #fff; background-image: url('https://media.discordapp.net/attachments/987149728800198686/991834200309248070/sparkle.gif');filter: drop-shadow(8px 8px 10px #8e0b98);color:#8e0b98;">Yet / Turtize</h2>
+     
+	
+
+</html>
