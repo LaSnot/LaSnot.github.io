@@ -222,3 +222,5 @@ const clearCursor = () => {
         </div>
     </div>
 </body>
+
+};
