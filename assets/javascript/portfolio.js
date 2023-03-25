@@ -31,6 +31,10 @@ $(document).ready(() => {
     {
      name: 'snapchat',
      link: 'www.snapchat.com/add/turtize?share_id=JqQCdvCrQ0GDOB7wlF+R8w&locale=sv_SE',
+    },
+    {
+      name: 'feds.lol',
+      link: 'feds.lol/yets',
     }
   ];
 
