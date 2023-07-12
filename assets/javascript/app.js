@@ -8,7 +8,7 @@ class _app {
     backgroundToggler = false;
     shouldIgnoreVideo = false;
     effects = ['bounce', 'flash', 'pulse', 'rubberBand', 'shake', 'swing', 'tada', 'wobble', 'jello'];
-    brandDescription = ['Colombian Snorter', 'Latino', 'Stop Dick Riding', 'Turtize On Top', 'Links Below', 'Im coming to your house', 'Over 20+ Accounts termed (Crying)', 'W Rizz', 'Daddy', 'Yet#0001'];
+    brandDescription = ['Colombian Snorter', 'Latino', 'Stop Dick Riding', 'Turtize On Top', 'Links Below', 'Im coming to your house', 'Over 20+ Accounts termed (Crying)', 'W Rizz', 'Daddy', 'turtize'];
  
     titleChanger = (text, delay) => {
       if (!text) return;
