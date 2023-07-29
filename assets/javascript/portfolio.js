@@ -132,7 +132,7 @@ $.getJSON(ipgeolocation, (data) => {
 
       clearCursor();
 
-      writeLine([`<i style='color: #F62459'>I love my close ones forreal, turblant on discord, Shout out to Azad & Kenton</i>`], 120, 500, () => {
+      writeLine([`<i style='color: #F62459'>turblant on discord, Shout out to Azad & Kenzo</i>`], 120, 500, () => {
         timeouts.push(
           setTimeout(() => {
             if (app.skippedIntro) return;
