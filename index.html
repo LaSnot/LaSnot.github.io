@@ -1,280 +1,220 @@
-<!DOCTYPE html>
-<html>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>turtize.lol</title>
-  <link rel='icon' href='https://media.discordapp.net/attachments/1088248913980571769/1088997198710177803/th-_21_.png'
-  <meta charset="UTF-8" />
-  <meta name="description" content="TURTIZE ON THE BEAT🦇" />
-  <meta name="keywords" content="turtize" />
-  <meta name="author" content="" />
-  <meta property="og:type" content="site" />
-  <meta property="og:title" content="TURTIZE ON THE BEAT🦇" />
-  <meta property="og:description" content="" />
-  <meta property="og:url" content="index.html" />
-  <meta property="og:image" content="" />
-  <meta itemprop="name" content="TURTIZE ON THE BEAT🦇" />
-  <meta itemprop="description" content="TURTIZE ON THE BEAT🦇" />
-  <meta itemprop="image" content="" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
-  <link rel="shortcut icon" href="#" type="image/x-icon" />
-  <link rel="stylesheet" type="text/css" href="assets/stylesheets/stylesheet.css" />
-  <link rel="stylesheet" type="text/css"
-    href="../cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
+<title>Shop Around</title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+<!--[if lte IE 6]><link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" /><![endif]-->
+<script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
+<script src="js/jquery.jcarousel.pack.js" type="text/javascript"></script>
+<script src="js/jquery-func.js" type="text/javascript"></script>
 </head>
-  <script type="text/javascript">
-// <![CDATA[
-var colour="#FFFFFF";
-var sparkles=120;
-
-
-var x=ox=400;
-var y=oy=300;
-var swide=800;
-var shigh=600;
-var sleft=sdown=0;
-var tiny=new Array();
-var star=new Array();
-var starv=new Array();
-var starx=new Array();
-var stary=new Array();
-var tinyx=new Array();
-var tinyy=new Array();
-var tinyv=new Array();
-
-window.onload=function() { if (document.getElementById) {
-  var i, rats, rlef, rdow;
-  for (var i=0; i<sparkles; i++) {
-    var rats=createDiv(3, 3);
-    rats.style.visibility="hidden";
-    document.body.appendChild(tiny[i]=rats);
-    starv[i]=0;
-    tinyv[i]=0;
-    var rats=createDiv(5, 5);
-    rats.style.backgroundColor="transparent";
-    rats.style.visibility="hidden";
-    var rlef=createDiv(1, 5);
-    var rdow=createDiv(5, 1);
-    rats.appendChild(rlef);
-    rats.appendChild(rdow);
-    rlef.style.top="2px";
-    rlef.style.left="0px";
-    rdow.style.top="0px";
-    rdow.style.left="2px";
-    document.body.appendChild(star[i]=rats);
-  }
-  set_width();
-  sparkle();
-}}
-
-function sparkle() {
-  var c;
-  if (x!=ox || y!=oy) {
-    ox=x;
-    oy=y;
-    for (c=0; c<sparkles; c++) if (!starv[c]) {
-      star[c].style.left=(starx[c]=x)+"px";
-      star[c].style.top=(stary[c]=y)+"px";
-      star[c].style.clip="rect(0px, 5px, 5px, 0px)";
-      star[c].style.visibility="visible";
-      starv[c]=50;
-      break;
-    }
-  }
-  for (c=0; c<sparkles; c++) {
-    if (starv[c]) update_star(c);
-    if (tinyv[c]) update_tiny(c);
-  }
-  setTimeout("sparkle()", 40);
-}
-
-function update_star(i) {
-  if (--starv[i]==25) star[i].style.clip="rect(1px, 4px, 4px, 1px)";
-  if (starv[i]) {
-    stary[i]+=1+Math.random()*3;
-    if (stary[i]<shigh+sdown) {
-      star[i].style.top=stary[i]+"px";
-      starx[i]+=(i%5-2)/5;
-      star[i].style.left=starx[i]+"px";
-    }
-    else {
-      star[i].style.visibility="hidden";
-      starv[i]=0;
-      return;
-    }
-  }
-  else {
-    tinyv[i]=50;
-    tiny[i].style.top=(tinyy[i]=stary[i])+"px";
-    tiny[i].style.left=(tinyx[i]=starx[i])+"px";
-    tiny[i].style.width="2px";
-    tiny[i].style.height="2px";
-    star[i].style.visibility="hidden";
-    tiny[i].style.visibility="visible"
-  }
-}
-
-function update_tiny(i) {
-  if (--tinyv[i]==25) {
-    tiny[i].style.width="1px";
-    tiny[i].style.height="1px";
-  }
-  if (tinyv[i]) {
-    tinyy[i]+=1+Math.random()*3;
-    if (tinyy[i]<shigh+sdown) {
-      tiny[i].style.top=tinyy[i]+"px";
-      tinyx[i]+=(i%5-2)/5;
-      tiny[i].style.left=tinyx[i]+"px";
-    }
-    else {
-      tiny[i].style.visibility="hidden";
-      tinyv[i]=0;
-      return;
-    }
-  }
-  else tiny[i].style.visibility="hidden";
-}
-
-document.onmousemove=mouse;
-function mouse(e) {
-  set_scroll();
-  y=(e)?e.pageY:event.y+sdown;
-  x=(e)?e.pageX:event.x+sleft;
-}
-
-function set_scroll() {
-  if (typeof(self.pageYOffset)=="number") {
-    sdown=self.pageYOffset;
-    sleft=self.pageXOffset;
-  }
-  else if (document.body.scrollTop || document.body.scrollLeft) {
-    sdown=document.body.scrollTop;
-    sleft=document.body.scrollLeft;
-  }
-  else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
-    sleft=document.documentElement.scrollLeft;
-	sdown=document.documentElement.scrollTop;
-  }
-  else {
-    sdown=0;
-    sleft=0;
-  }
-}
-
-window.onresize=set_width;
-function set_width() {
-  if (typeof(self.innerWidth)=="number") {
-    swide=self.innerWidth;
-    shigh=self.innerHeight;
-  }
-  else if (document.documentElement && document.documentElement.clientWidth) {
-    swide=document.documentElement.clientWidth;
-    shigh=document.documentElement.clientHeight;
-  }
-  else if (document.body.clientWidth) {
-    swide=document.body.clientWidth;
-    shigh=document.body.clientHeight;
-  }
-}
-
-function createDiv(height, width) {
-  var div=document.createElement("div");
-  div.style.position="absolute";
-  div.style.height=height+"px";
-  div.style.width=width+"px";
-  div.style.overflow="hidden";
-  div.style.backgroundColor=colour;
-  return (div);
-}
-// ]]>
-</script>
-
-
 <body>
-  <script type="text/javascript" src="assets/javascript/app.js"></script>
-
+<!-- Shell -->
+<div class="shell">
+  <!-- Header -->
+  <div id="header">
+    <h1 id="logo"><a href="#">shoparound</a></h1>
+    <!-- Cart -->
+    <div id="cart"> <a href="#" class="cart-link">Your Shopping Cart</a>
+      <div class="cl">&nbsp;</div>
+      <span>Articles: <strong>4</strong></span> &nbsp;&nbsp; <span>Cost: <strong>$250.99</strong></span> </div>
+    <!-- End Cart -->
+    <!-- Navigation -->
+    <div id="navigation">
+      <ul>
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#">Support</a></li>
+        <li><a href="#">My Account</a></li>
+        <li><a href="#">The Store</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <!-- End Navigation -->
+  </div>
+  <!-- End Header -->
+  <!-- Main -->
   <div id="main">
-    <table class="box">
-      <tbody>
-        <tr>
-          <td><span id="line1" style="white-space: pre;"></span></td>
-        </tr>
-        <tr>
-          <td><span id="line2" style="white-space: pre;"></span></td>
-        </tr>
-        <tr>
-          <td><span id="line3 space" style="white-space: pre;"></span></td>
-        </tr>
-        <tr>
-          <td><span id="line4" style="white-space: pre;"></span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="container" style="display: none;">
-    <h1 class="brand-header">
-      <a href="https://corrupt.bio/t" target="BLANK">🦇Turtize.lol</a>
-    </h1>
-
-    <p><span id="brand"></span></p>
-  </div>
-
-  <div class="marquee-container" style="visibility: hidden;">
-    <pre>|<div id="marquee"></div>|</pre>
-  </div>
-
-  <div class="background" style="display: none;">
-    <div id="pattern"></div>
-
-    <audio id="audio" loop="">
-      <source src="https://cdn.discordapp.com/attachments/914256750667005954/1134911956243992616/Adouli_-_Mamacita.mp4" />
-      <script>
-        const audio = document.getElementById('audio');
-
-        app.audioElement = audio;
-        app.audioElement.volume = 50;
-      </script>
-    </audio>
-
-    <video id="background" loop="">
-      <source src="https://cdn.discordapp.com/attachments/914256750667005954/1134911956243992616/Adouli_-_Mamacita.mp4" />
-      <script>
-        const video = document.getElementById('background');
-
-        app.videoElement = video;
-        app.videoElement.volume = 0;
-      </script>
-    </video>
-  </div>
-
-  <div class="top-right">
-    <i><a class="skip">skip intro</a></i>
-  </div>
-
-  <div class="footer">
-    <i><a href="https://feds.lol/turb" target="_BLANK">Hi</a></i>
-  </div>
-
-  <script type="text/javascript" src="assets/javascript/lib/jquery-3.1.1.min.js"></script>
-  <script type="text/javascript" src="assets/javascript/lib/jquery.marquee.min.js"></script>
-  <script type="text/javascript" src="assets/javascript/lib/jquery.cookie.min.js"></script>
-  <script type="text/javascript" src="assets/javascript/lib/typed.min.js"></script>
-  <script type="text/javascript" src="assets/javascript/portfolio.js"></script>
-            
-<div id="center;">
-                <div style="text-align: center;"
-            <a href="https://discord.com/users/925010029663379457" target="_blank">
-                <img src="https://discord.c99.nl/widget/theme-4/925010029663379457.png" style="width: 300px;">
-            </a>
+    <div class="cl">&nbsp;</div>
+    <!-- Content -->
+    <div id="content">
+      <!-- Content Slider -->
+      <div id="slider" class="box">
+        <div id="slider-holder">
+          <ul>
+            <li><a href="#"><img src="css/images/slide1.jpg" alt="" /></a></li>
+            <li><a href="#"><img src="css/images/slide1.jpg" alt="" /></a></li>
+            <li><a href="#"><img src="css/images/slide1.jpg" alt="" /></a></li>
+            <li><a href="#"><img src="css/images/slide1.jpg" alt="" /></a></li>
+          </ul>
         </div>
-    </div> 
+        <div id="slider-nav"> <a href="#" class="active">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> </div>
+      </div>
+      <!-- End Content Slider -->
+      <!-- Products -->
+      <div class="products">
+        <div class="cl">&nbsp;</div>
+        <ul>
+          <li> <a href="#"><img src="css/images/big1.jpg" alt="" /></a>
+            <div class="product-info">
+              <h3>LOREM IPSUM</h3>
+              <div class="product-desc">
+                <h4>WOMEN’S</h4>
+                <p>Lorem ipsum dolor sit<br />
+                  amet</p>
+                <strong class="price">$58.99</strong> </div>
+            </div>
+          </li>
+          <li> <a href="#"><img src="css/images/big1.jpg" alt="" /></a>
+            <div class="product-info">
+              <h3>LOREM IPSUM</h3>
+              <div class="product-desc">
+                <h4>WOMEN’S</h4>
+                <p>Lorem ipsum dolor sit<br />
+                  amet</p>
+                <strong class="price">$58.99</strong> </div>
+            </div>
+          </li>
+          <li class="last"> <a href="#"><img src="css/images/big1.jpg" alt="" /></a>
+            <div class="product-info">
+              <h3>LOREM IPSUM</h3>
+              <div class="product-desc">
+                <h4>WOMEN’S</h4>
+                <p>Lorem ipsum dolor sit<br />
+                  amet</p>
+                <strong class="price">$58.99</strong> </div>
+            </div>
+          </li>
+        </ul>
+        <div class="cl">&nbsp;</div>
+      </div>
+      <!-- End Products -->
+    </div>
+    <!-- End Content -->
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <!-- Search -->
+      <div class="box search">
+        <h2>Search by <span></span></h2>
+        <div class="box-content">
+          <form action="#" method="post">
+            <label>Keyword</label>
+            <input type="text" class="field" />
+            <label>Category</label>
+            <select class="field">
+              <option value="">-- Select Category --</option>
+            </select>
+            <div class="inline-field">
+              <label>Price</label>
+              <select class="field small-field">
+                <option value="">$10</option>
+              </select>
+              <label>to:</label>
+              <select class="field small-field">
+                <option value="">$50</option>
+              </select>
+            </div>
+            <input type="submit" class="search-submit" value="Search" />
+            <p> <a href="#" class="bul">Advanced search</a><br />
+              <a href="#" class="bul">Contact Customer Support</a> </p>
+          </form>
+        </div>
+      </div>
+      <!-- End Search -->
+      <!-- Categories -->
+      <div class="box categories">
+        <h2>Categories <span></span></h2>
+        <div class="box-content">
+          <ul>
+            <li><a href="#">Category 1</a></li>
+            <li><a href="#">Category 2</a></li>
+            <li><a href="#">Category 3</a></li>
+            <li><a href="#">Category 4</a></li>
+            <li><a href="#">Category 5</a></li>
+            <li><a href="#">Category 6</a></li>
+            <li><a href="#">Category 7</a></li>
+            <li><a href="#">Category 8</a></li>
+            <li><a href="#">Category 9</a></li>
+            <li><a href="#">Category 10</a></li>
+            <li><a href="#">Category 11</a></li>
+            <li><a href="#">Category 12</a></li>
+            <li class="last"><a href="#">Category 13</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- End Categories -->
+    </div>
+    <!-- End Sidebar -->
+    <div class="cl">&nbsp;</div>
+  </div>
+  <!-- End Main -->
+  <!-- Side Full -->
+  <div class="side-full">
+    <!-- More Products -->
+    <div class="more-products">
+      <div class="more-products-holder">
+        <ul>
+          <li><a href="#"><img src="css/images/small1.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small2.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small3.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small4.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small5.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small6.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small7.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small1.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small2.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small3.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small4.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small5.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small6.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small7.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small1.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small2.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small3.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small4.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small5.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small6.jpg" alt="" /></a></li>
+          <li class="last"><a href="#"><img src="css/images/small7.jpg" alt="" /></a></li>
+        </ul>
+      </div>
+      <div class="more-nav"> <a href="#" class="prev">previous</a> <a href="#" class="next">next</a> </div>
+    </div>
+    <!-- End More Products -->
+    <!-- Text Cols -->
+    <div class="cols">
+      <div class="cl">&nbsp;</div>
+      <div class="col">
+        <h3 class="ico ico1">Donec imperdiet</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet, metus ac cursus auctor, arcu felis ornare dui.</p>
+        <p class="more"><a href="#" class="bul">Lorem ipsum</a></p>
+      </div>
+      <div class="col">
+        <h3 class="ico ico2">Donec imperdiet</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet, metus ac cursus auctor, arcu felis ornare dui.</p>
+        <p class="more"><a href="#" class="bul">Lorem ipsum</a></p>
+      </div>
+      <div class="col">
+        <h3 class="ico ico3">Donec imperdiet</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet, metus ac cursus auctor, arcu felis ornare dui.</p>
+        <p class="more"><a href="#" class="bul">Lorem ipsum</a></p>
+      </div>
+      <div class="col col-last">
+        <h3 class="ico ico4">Donec imperdiet</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet, metus ac cursus auctor, arcu felis ornare dui.</p>
+        <p class="more"><a href="#" class="bul">Lorem ipsum</a></p>
+      </div>
+      <div class="cl">&nbsp;</div>
+    </div>
+    <!-- End Text Cols -->
+  </div>
+  <!-- End Side Full -->
+  <!-- Footer -->
+  <div id="footer">
+    <p class="left"> <a href="#">Home</a> <span>|</span> <a href="#">Support</a> <span>|</span> <a href="#">My Account</a> <span>|</span> <a href="#">The Store</a> <span>|</span> <a href="#">Contact</a> </p>
+    <p class="right"> &copy; 2010 Shop Around. Design by <a href="http://chocotemplates.com">Chocotemplates.com</a> </p>
+  </div>
+  <!-- End Footer -->
+</div>
+<!-- End Shell -->
 </body>
-
-<style>
-<h2 class="text-[20px] text-white font-semibold" style="color: #fff; background-image: url('https://media.discordapp.net/attachments/987149728800198686/991834200309248070/sparkle.gif');filter: drop-shadow(8px 8px 10px #8e0b98);color:#8e0b98;">Yet / Turtize</h2>
-     
-	
-
 </html>
